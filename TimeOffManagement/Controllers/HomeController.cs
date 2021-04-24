@@ -23,6 +23,7 @@ namespace TimeOffManagement.Controllers
             return View();
         }
 
+        // This is now the dropdown box
         public IActionResult Privacy()
         {
             return View();
