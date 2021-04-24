@@ -12,5 +12,11 @@ namespace TimeOffManagement.Data
             : base(options)
         {
         }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<TimeOffType> TimeOffTypes { get; set; }
+        public DbSet<TimeOffAllocation> TimeOffAllocations { get; set; }
+        public DbSet<TimeOffHistory> TimeOffHistories { get; set; }
+
+
     }
 }
