@@ -11,7 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TimeOffManagement.Contracts;
 using TimeOffManagement.Data;
+using TimeOffManagement.Repository;
 
 namespace TimeOffManagement
 {
@@ -30,6 +32,9 @@ namespace TimeOffManagement
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<ITimeOffTypeRepository, TimeOffTypeRepository>();
+            services.AddScoped<ITimeOffAllocationRepository, TimeOffAllocationRepository>();
+            services.AddScoped<ITimeOffHistoryRepository, TimeOffHistoryRepository>();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
