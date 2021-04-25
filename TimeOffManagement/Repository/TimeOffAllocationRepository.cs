@@ -18,32 +18,38 @@ namespace TimeOffManagement.Repository
 
         public bool Create(TimeOffAllocation entity)
         {
-            throw new NotImplementedException();
+            _db.TimeOffAllocations.Add(entity);
+            return Save();
         }
 
         public bool Delete(TimeOffAllocation entity)
         {
-            throw new NotImplementedException();
+            _db.TimeOffAllocations.Remove(entity);
+            return Save();
         }
 
         public ICollection<TimeOffAllocation> GetAll()
         {
-            throw new NotImplementedException();
+            var timeOffAllocations = _db.TimeOffAllocations.ToList();
+            return timeOffAllocations;
         }
 
         public TimeOffAllocation GetById(int id)
         {
-            throw new NotImplementedException();
+            var timeOffAllocation = _db.TimeOffAllocations.Find(id);
+            return timeOffAllocation;
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges();
+            return changes > 0;
         }
 
         public bool Update(TimeOffAllocation entity)
         {
-            throw new NotImplementedException();
+            _db.TimeOffAllocations.Update(entity);
+            return Save();
         }
     }
 }
