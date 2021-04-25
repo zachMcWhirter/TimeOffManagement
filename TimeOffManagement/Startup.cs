@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,9 @@ namespace TimeOffManagement
             services.AddScoped<ITimeOffTypeRepository, TimeOffTypeRepository>();
             services.AddScoped<ITimeOffAllocationRepository, TimeOffAllocationRepository>();
             services.AddScoped<ITimeOffHistoryRepository, TimeOffHistoryRepository>();
+
+            services.AddAutoMapper(typeof(Mapper));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();

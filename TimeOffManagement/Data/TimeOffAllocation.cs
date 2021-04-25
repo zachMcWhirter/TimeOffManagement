@@ -11,14 +11,13 @@ namespace TimeOffManagement.Data
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public int NumberOfDays { get; set; }
         public DateTime DateCreated { get; set; }
-        [ForeignKey("EmployeeId")]
         public Employee Employee { get; set; }
         // Usually I use an int for Id, but it can also be a long string with
         // unique charaters (which is what I did this time)
         public string EmployeeId { get; set; }
-        [ForeignKey("TimeOffTypeId")]
         public TimeOffType TimeOffType { get; set; }
         public int TimeOffTypeId { get; set; }
     }
