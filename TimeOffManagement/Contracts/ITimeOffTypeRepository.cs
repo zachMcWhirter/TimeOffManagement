@@ -10,6 +10,6 @@ namespace TimeOffManagement.Contracts
     // and then allows the TimeOffTypeRepository to inherit those same methods
     interface ITimeOffTypeRepository : IRepositoryBase<TimeOffType>
     {
-
+        ICollection<TimeOffType> GetEmployeesByTimeOffType(int id);
     }
 }

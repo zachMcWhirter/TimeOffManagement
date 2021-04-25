@@ -21,32 +21,44 @@ namespace TimeOffManagement.Repository
 
         public bool Create(TimeOffType entity)
         {
-            throw new NotImplementedException();
+            _db.TimeOffTypes.Add(entity);
+            return Save();
         }
 
         public bool Delete(TimeOffType entity)
         {
-            throw new NotImplementedException();
+            _db.TimeOffTypes.Remove(entity);
+            return Save();
         }
 
         public ICollection<TimeOffType> GetAll()
         {
-            throw new NotImplementedException();
+            var timeOffTypes = _db.TimeOffTypes.ToList();
+            return timeOffTypes;
         }
 
         public TimeOffType GetById(int id)
+        {
+            var timeOffType = _db.TimeOffTypes.Find(id);
+            return timeOffType;
+        }
+
+        public ICollection<TimeOffType> GetEmployeesByTimeOffType(int id)
         {
             throw new NotImplementedException();
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            var changes = _db.SaveChanges() ;
+            return changes > 0;
         }
 
         public bool Update(TimeOffType entity)
         {
-            throw new NotImplementedException();
+            _db.TimeOffTypes.Update(entity);
+            return Save();
+
         }
     }
 }

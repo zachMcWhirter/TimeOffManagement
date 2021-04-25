@@ -32,6 +32,8 @@ namespace TimeOffManagement
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            // Add all interface-repository pairs here
             services.AddScoped<ITimeOffTypeRepository, TimeOffTypeRepository>();
             services.AddScoped<ITimeOffAllocationRepository, TimeOffAllocationRepository>();
             services.AddScoped<ITimeOffHistoryRepository, TimeOffHistoryRepository>();
