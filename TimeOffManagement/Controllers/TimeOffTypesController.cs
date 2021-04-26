@@ -129,41 +129,46 @@ namespace TimeOffManagement.Controllers
         // GET: TimeOffTypesController/Delete/5
         public ActionResult Delete(int id)
         {
-            if (!_repo.IsExistingId(id))
+            var timeOffType = _repo.GetById(id);
+            if (timeOffType == null)
             {
                 return NotFound();
             }
-            var timeOffType = _repo.GetById(id);
-            var model = _mapper.Map<TimeOffTypeVM>(timeOffType);
-            return View(model);
+
+            var isSuccessful = _repo.Delete(timeOffType);
+            if (!isSuccessful)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: TimeOffTypesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, TimeOffTypeVM model)
-        {
-            try
-            {
-                var timeOffType = _repo.GetById(id);
+        //// POST: TimeOffTypesController/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int id, TimeOffTypeVM model)
+        //{
+        //    try
+        //    {
+        //        var timeOffType = _repo.GetById(id);
 
-                // If the correct Id is not found, return NotFound message
-                if (timeOffType == null)
-                {
-                    return NotFound();
-                }
+        //        // If the correct Id is not found, return NotFound message
+        //        if (timeOffType == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-                var isSuccessful = _repo.Delete(timeOffType);
-                if (!isSuccessful)
-                {
-                    return View(model);
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View(model);
-            }
-        }
+        //        var isSuccessful = _repo.Delete(timeOffType);
+        //        if (!isSuccessful)
+        //        {
+        //            return View(model);
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View(model);
+        //    }
+        //}
     }
 }
