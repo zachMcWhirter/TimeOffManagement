@@ -33,7 +33,13 @@ namespace TimeOffManagement.Controllers
         // GET: TimeOffTypesController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (!_repo.IsExistingId(id))
+            {
+                return NotFound();
+            }
+            var timeOffType = _repo.GetById(id);
+            var model = _mapper.Map<TimeOffTypeVM>(timeOffType);
+            return View(model);
         }
 
         // GET: TimeOffTypesController/Create
@@ -123,21 +129,40 @@ namespace TimeOffManagement.Controllers
         // GET: TimeOffTypesController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (!_repo.IsExistingId(id))
+            {
+                return NotFound();
+            }
+            var timeOffType = _repo.GetById(id);
+            var model = _mapper.Map<TimeOffTypeVM>(timeOffType);
+            return View(model);
         }
 
         // POST: TimeOffTypesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, TimeOffTypeVM model)
         {
             try
             {
+                var timeOffType = _repo.GetById(id);
+
+                // If the correct Id is not found, return NotFound message
+                if (timeOffType == null)
+                {
+                    return NotFound();
+                }
+
+                var isSuccessful = _repo.Delete(timeOffType);
+                if (!isSuccessful)
+                {
+                    return View(model);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
     }
