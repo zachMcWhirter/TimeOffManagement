@@ -48,6 +48,13 @@ namespace TimeOffManagement.Repository
             throw new NotImplementedException();
         }
 
+        public bool IsExistingId(int id)
+        {
+            // Any() is looking for any id that matched the id of the queried item
+            var exists = _db.TimeOffTypes.Any(q => q.Id == id);
+            return exists;
+        }
+
         public bool Save()
         {
             var changes = _db.SaveChanges() ;
