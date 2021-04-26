@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TimeOffManagement.Contracts;
 using TimeOffManagement.Data;
+using TimeOffManagement.Mappings;
 using TimeOffManagement.Repository;
 
 namespace TimeOffManagement
@@ -39,7 +40,8 @@ namespace TimeOffManagement
             services.AddScoped<ITimeOffAllocationRepository, TimeOffAllocationRepository>();
             services.AddScoped<ITimeOffHistoryRepository, TimeOffHistoryRepository>();
 
-            services.AddAutoMapper(typeof(Mapper));
+            // AutoMapper service
+            services.AddAutoMapper(typeof(Maps));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
