@@ -17,7 +17,7 @@ namespace TimeOffManagement.Models
         public DateTime StartDate { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
-        public DetailsTimeOffTypeVM TimeOffType { get; set; }
+        public TimeOffTypeVM TimeOffType { get; set; }
         public int TimeOffTypeId { get; set; }
 
         // Represents a dropdown list containing types of time-off

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TimeOffManagement.Models;
 
 namespace TimeOffManagement.Data
 {
@@ -18,6 +19,7 @@ namespace TimeOffManagement.Data
         public DbSet<TimeOffType> TimeOffTypes { get; set; }
         public DbSet<TimeOffAllocation> TimeOffAllocations { get; set; }
         public DbSet<TimeOffHistory> TimeOffHistories { get; set; }
+        public DbSet<TimeOffManagement.Models.TimeOffTypeVM> DetailsTimeOffTypeVM { get; set; }
 
     }
 }
