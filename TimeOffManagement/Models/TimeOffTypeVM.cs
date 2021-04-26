@@ -8,17 +8,15 @@ namespace TimeOffManagement.Models
 {
     // The View Model is an abstraction of the acual Model.
     // It can sometimes contain fewer properties than the Model itself
-    public class DetailsTimeOffTypeVM
+    public class TimeOffTypeVM
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        [Display(Name="Date Created")]
-        public DateTime DateCreated { get; set; }
-    }
-
-    public class CreateTimeOffTypeVM
-    {
         [Required]
         public string Name { get; set; }
+        [Display(Name="Date Created")]
+
+        // The ? char makes the DateTime nullable.
+        // So we can choose when to provide that value later
+        public DateTime? DateCreated { get; set; }
     }
 }

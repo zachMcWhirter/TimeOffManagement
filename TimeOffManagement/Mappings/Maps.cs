@@ -12,8 +12,7 @@ namespace TimeOffManagement.Mappings
     {
         public Maps()
         {
-            CreateMap<TimeOffType, DetailsTimeOffTypeVM>().ReverseMap();
-            CreateMap<TimeOffType, CreateTimeOffTypeVM>().ReverseMap();
+            CreateMap<TimeOffType, TimeOffTypeVM>().ReverseMap();
             CreateMap<TimeOffAllocation, TimeOffAllocationVM>().ReverseMap();
             CreateMap<TimeOffHistory, TimeOffHistoryVM>().ReverseMap();
             CreateMap<Employee, EmployeeVM>().ReverseMap();

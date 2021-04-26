@@ -16,7 +16,7 @@ namespace TimeOffManagement.Models
         public DateTime DateCreated { get; set; }
         public EmployeeVM Employee { get; set; }
         public string EmployeeId { get; set; }
-        public DetailsTimeOffTypeVM TimeOffType { get; set; }
+        public TimeOffTypeVM TimeOffType { get; set; }
         public int TimeOffTypeId { get; set; }
 
         // Represents a dropdown list of employees in the db

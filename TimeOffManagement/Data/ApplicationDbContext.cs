@@ -19,7 +19,7 @@ namespace TimeOffManagement.Data
         public DbSet<TimeOffType> TimeOffTypes { get; set; }
         public DbSet<TimeOffAllocation> TimeOffAllocations { get; set; }
         public DbSet<TimeOffHistory> TimeOffHistories { get; set; }
-        public DbSet<TimeOffManagement.Models.DetailsTimeOffTypeVM> DetailsTimeOffTypeVM { get; set; }
+        public DbSet<TimeOffManagement.Models.TimeOffTypeVM> DetailsTimeOffTypeVM { get; set; }
 
     }
 }
